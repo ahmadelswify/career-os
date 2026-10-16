@@ -1,81 +1,30 @@
-# agentic-os .gitignore
-# Covers all four sub-projects: work-os, career-os, personal-os, meeting-os.
-#
-# NOTE: We use `Dir/*` (not `Dir/`) so that git still traverses the directory
-# and honors the `!**/.gitkeep` exception below — otherwise the stubs that
-# preserve the directory structure for fresh clones would be invisible.
+# User content (always private)
+# NOTE: `Dir/*` (not `Dir/`) so git still traverses the dir and the
+# `!**/.gitkeep` exception below keeps the directory stubs visible.
+Impact-Library/*
+Stories/*
+Applications/*
+Companies/*
+Learnings/*
+Resumes/*
 
-# === User content (always private) — exclude contents, not the dir itself ===
-# Work-os
-**/Active/*
-**/Projects/*
-**/Career/*
-**/Knowledge/*
-**/Archive/*
-**/Deliverables/*
-**/Clients/*
-# Personal-os
-**/Tasks/*
-**/Inbox/*
-# Career-os
-**/Applications/*
-**/Resumes/*
-**/Stories/*
-**/Impact-Library/*
-**/Learnings/*
-# Meeting-os
-**/Meetings/*
-**/Decisions/*
-**/Actions/*
-**/People/*
+# Generator artifacts
+generator/node_modules/
+generator/output/
+generator/*.pdf
 
-# Keep the directory stubs visible after clone
+# Keep directory stubs visible after clone
 !**/.gitkeep
 
-# === Per-user generated files (only templates ship) ===
-GOALS.md
-BACKLOG.md
-INBOX.md
-!GOALS-template.md
-!BACKLOG-template.md
-!INBOX-template.md
-!inbox-template.md
-
-# === Hook-generated activity logs (must never be committed) ===
-.work-os-activity.log
-*-activity.log
-.activity.log
-
-# === Claude Code local config (must never be committed) ===
-.claude/settings.local.json
-**/.claude/settings.local.json
-
-# === Generated health reports ===
+# Health reports
 .health/
 
-# === Secrets — defense in depth (no key should ever be in this repo) ===
+# Local config
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+
+# Secrets
 .env
 .env.*
-!.env.example
-*.pem
-*.key
-*.p12
-*.pfx
-credentials.json
-service_account*.json
-client_secret*.json
-
-# === OS files ===
-.DS_Store
-Thumbs.db
-
-# === Editor files ===
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# === Backup files ===
-*.bak
-*.backup

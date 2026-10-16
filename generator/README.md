@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-cd career-os/generator
+cd generator
 npm install
 ```
 

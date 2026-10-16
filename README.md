@@ -1,82 +1,148 @@
-[![GitHub stars](https://img.shields.io/github/stars/ahmadelswify/agentic-os?style=flat)](https://github.com/ahmadelswify/agentic-os/stargazers)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+# career-os: Land Your Next Role with AI
 
-# agentic-os: AI-Native Operating Systems Powered by Claude Code
+> Drop a job description. Get a tailored resume, interview prep, and tracked application, all through conversation.
 
-> Stop managing tools. Start having conversations. Let AI manage the system while you do the work.
+A complete career management system that handles the full job search lifecycle: resume tailoring, STAR story preparation, interview coaching, application tracking, and learnings capture. Built for [Claude Code](https://claude.com/claude-code).
 
-A collection of markdown-based operating systems where AI handles the structure, organization, and context so you can focus on what matters. Each OS is self-contained, local-first, and built for [Claude Code](https://claude.com/claude-code).
+## How It Works
 
-## What Is an Agentic OS?
+1. **Build your impact library** by documenting achievements with metrics, context, and alternate framings
+2. **Drop a job description** and say "tailor my resume"
+3. **AI parses the JD**, assesses fit, maps your experience, translates domain language, and rewrites your resume
+4. **Prepare for interviews** with algorithm-labeled STAR stories, probe answer practice, and company research
+5. **Track everything** from application to outcome, capturing learnings that improve your next attempt
 
-An agentic OS is a folder of markdown files with a set of instructions that turn Claude Code into a specialized assistant. No databases, no SaaS, no vendor lock-in. Your data lives as plain text on your machine. The AI reads your instructions, understands your context, and manages the system through conversation.
+## Core Question
 
-You talk. It organizes. You keep working.
+**"How do I land my next role?"**
 
-## The Collection
+If you need professional task management, see [work-os](https://github.com/ahmadelswify/work-os). If you need life management, see [personal-os](https://github.com/ahmadelswify/personal-os).
 
-| OS | What It Does | Who It's For |
-|---|---|---|
-| **[work-os](work-os/)** | Professional task management, goal tracking, daily planning | Knowledge workers managing professional tasks, goals, and career growth |
-| **[career-os](career-os/)** | Resume tailoring, STAR stories, interview prep, application tracking | Job seekers who want a full system for landing their next role |
-| **[personal-os](personal-os/)** | Life goals, relationships, health, projects, finances | Anyone wanting a structured system for managing their whole life |
-| **[meeting-os](meeting-os/)** | Meeting notes, decision tracking, action items, follow-ups | Professionals who lose track of what happened and what was promised |
-
-Each OS works independently. Pick one, pick all four, or mix and match.
-
-## What It Looks Like
-
-Instead of clicking through forms, you talk:
-
-```
-You:    I have a 1:1 with my manager tomorrow. What should I bring up?
-Claude: Looking at your last 1:1 notes and this week's activity...
-        - Two open commitments from last week still in progress
-        - One unblocker request you flagged on Tuesday
-        - Promotion conversation you wanted to revisit this month
-        Want me to draft a one-pager?
-```
-
-Behind the scenes, the AI is reading your markdown files, finding the relevant context, and surfacing it on demand. No app to open. No fields to fill. Just conversation.
-
-## Philosophy
-
-- **Local-first.** Everything is markdown files on your machine. Back up to GitHub if you want, but nothing leaves your computer by default.
-- **Conversational.** No forms, no fields, no clicks. You talk to AI in natural language and it handles the rest.
-- **Goal-driven.** Every task, note, and action connects back to what you're trying to accomplish. The AI keeps you aligned.
-- **No vendor lock-in.** It's just markdown. If you stop using Claude Code tomorrow, your files are still useful, readable text.
-- **Progressive context.** The AI loads only what it needs, when it needs it. Small instruction files point to deeper docs on demand.
-
-## Getting Started
-
-**Prerequisites:** [Claude Code](https://claude.com/claude-code) and Node.js v18+
+## Quick Start
 
 ```bash
-# Clone the collection
-git clone https://github.com/ahmadelswify/agentic-os.git
-
-# Pick an OS and navigate into it
-cd agentic-os/work-os    # or career-os, personal-os, meeting-os
-
-# Launch Claude Code
+git clone https://github.com/ahmadelswify/career-os.git
+cd career-os
 claude
 ```
 
-Each OS has its own README with specific setup instructions. Claude Code automatically reads the `CLAUDE.md` file in whatever directory you launch it from.
+Then say: `"Help me set up career-os"`
 
-## Contributing
+Claude will walk you through:
+1. Building your initial impact library from your resume
+2. Creating your first set of STAR stories
+3. Setting up your application tracker
 
-Found this helpful? Have ideas? Open an issue or PR. Each OS accepts contributions independently.
+## What's Inside
 
-If you build your own agentic OS and want to add it to the collection, open a PR with a new subdirectory following the same structure: `README.md`, `CLAUDE.md`, `AGENTS.md`, and supporting files.
+```
+career-os/
+├── CLAUDE.md                     # Points to AGENTS.md
+├── AGENTS.md                     # Full career agent instructions
+├── Impact-Library/               # Your achievements (filled in as you go)
+├── Stories/                      # Your STAR stories
+├── Applications/                 # One folder per company you apply to
+├── Companies/                    # Persistent company research and target list
+├── Learnings/                    # Communication rules, interviewer types, metrics
+├── Resumes/                      # Resume JSON files and generated PDFs
+├── docs/
+│   ├── how-it-works.md           # End-to-end flywheel explanation
+│   ├── domain-translation.md     # How to translate experience across industries
+│   └── stories-framework.md      # Building reusable STAR stories
+├── templates/
+│   ├── resume-data.json          # Empty resume JSON schema
+│   ├── impact-library.md         # Achievement documentation template
+│   ├── jd-analysis.md            # Job description parsing template
+│   ├── application-tracker.md    # Track applications and outcomes
+│   ├── company-research.md       # Persistent per-company research template
+│   ├── target-companies.md       # Curated career boards to scan weekly
+│   ├── star-story.md             # Reusable STAR story template
+│   ├── interview-prep.md         # Pre-interview checklist
+│   └── outcome-log.md            # Post-interview capture template
+├── examples/
+│   └── workflows/
+│       ├── resume-tailoring.md   # Step-by-step resume tailoring workflow
+│       ├── interview-prep.md     # Interview preparation workflow
+│       └── job-search.md         # Weekly board scan + go/no-go filter
+└── generator/                    # Optional Node.js PDF generator
+    ├── generate-pdf.js
+    ├── package.json
+    └── public/fonts/             # Bundled Roboto (Apache 2.0)
+```
+
+## Configurable by Default
+
+The structure, schemas, templates, and tools above are starting points, not constraints. Ask Claude to:
+
+- Remove the summary from your resume, or move education to the top
+- Add fields to a template (e.g., a "salary range" column in the tracker)
+- Rename `Applications/` to `applications/` if you prefer lowercase
+- Swap the bundled Roboto font for Lora, Merriweather, or anything else
+- Skip a section you don't use, or add one this template doesn't have
+
+The whole workspace is meant to be edited.
+
+## Key Workflows
+
+### Resume Tailoring
+```
+You: [paste job description] Tailor my resume for this role.
+
+AI: Parsing JD... Here's my analysis:
+
+    Fit Score: 78/100
+    Strong matches: Technical operations, cross-functional leadership, process optimization
+    Gaps to address: No direct experience with their specific tooling
+    Domain translation needed: "Support engineering" → "Technical Operations"
+
+    Ready to generate tailored resume?
+```
+
+### Interview Prep
+```
+You: I have an interview with [Company] tomorrow. Help me prepare.
+
+AI: Reading your application and stories...
+
+    Company Research: [key findings]
+    Role Focus: [what they care about most]
+
+    Top 3 stories to prepare:
+    1. [Story] — covers their #1 requirement
+    2. [Story] — addresses the gap in your resume
+    3. [Story] — shows leadership at scale
+
+    Let's practice. Tell me the first story in 90 seconds.
+```
+
+## The Career Flywheel
+
+Every application makes the next one better:
+
+```
+Impact Library → Tailored Resume → Interview → Outcome
+      ↑                                          |
+      └──── Learnings ← Outcome Log ←────────────┘
+```
+
+- **Wins** become new stories with verified metrics
+- **Rejections** produce learnings about positioning and domain language
+- **Interview feedback** refines how you tell stories
+- **New achievements** expand your impact library
+
+## Quick Commands
+
+| Command | What it does |
+|---------|-------------|
+| `/setup` | Set up your career-os workspace (~10 min) |
+| `/tailor-resume` | Parse a JD and produce a tailored resume |
+| `/prep-interview` | Prepare for an interview with stories and practice |
+| `/log-outcome` | Capture result and learnings from an application |
+
+## Requirements
+
+- [Claude Code](https://claude.com/claude-code) and Node.js v18+
 
 ## License
 
-MIT. Use it however you want.
-
----
-
-**Created by Ahmad Elswify** · [LinkedIn](https://www.linkedin.com/in/swify/)
-
-**Contributors:**
-- Yusef Khedr, Software Engineer
+[MIT](LICENSE)

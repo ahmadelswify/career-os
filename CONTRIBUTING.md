@@ -1,20 +1,17 @@
-# Contributing to agentic-os
+# Contributing to career-os
 
 Thanks for your interest in contributing.
 
 ## Getting Started
 
 1. Fork the repo
-2. Clone: `git clone https://github.com/YOUR-USERNAME/agentic-os.git`
-3. Pick an OS and navigate into it: `cd work-os`
-4. Launch Claude Code: `claude`
-5. Read the AGENTS.md to understand how the system works
+2. Clone: `git clone https://github.com/YOUR-USERNAME/career-os.git`
+3. `cd career-os` and launch Claude Code: `claude`
+4. Read AGENTS.md to understand how the system works
 
 ## What You Can Contribute
 
-- **Templates:** New task, project, or workflow templates
-- **Tutorials:** Role-specific guides (see work-os/tutorials/)
-- **Use Cases:** Real-world examples (see work-os/use-cases/)
+- **Templates:** New templates or workflows
 - **Bug Fixes:** Issues labeled `bug`
 - **Documentation:** Improvements to READMEs, docs, or examples
 
@@ -22,11 +19,10 @@ Thanks for your interest in contributing.
 
 - Keep PRs focused (one change per PR)
 - Reference the issue number if applicable
-- We review PRs within a few days
 
 ## Style
 
 - Primarily a markdown-based system. Shell hooks (`.claude/hooks/*.sh`) and JSON schemas are the only non-markdown.
-- Follow existing patterns in the OS you're contributing to.
+- Follow existing patterns.
 - Read CLAUDE.md and AGENTS.md before making changes.
-- Don't commit your own user content. The `.gitignore` excludes `Active/`, `Tasks/`, `BACKLOG.md`, `GOALS.md`, `.health/`, etc. — confirm `git status` before committing.
+- Don't commit your own user content. The `.gitignore` excludes your personal folders; confirm `git status` before committing.
