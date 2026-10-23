@@ -38,9 +38,13 @@ Create:
 - `Applications/` directory
 - `Learnings/` with starter files
 - `Resumes/` directory
+- `Sources/` and `People/` directories
+- `index.md` from `templates/index.md`, listing every page created during setup
+- `LOG.md` from `templates/log.md`
+- `Learnings/fit-calibration.md` from `templates/fit-calibration.md`
 
 ### 4. Welcome Message
-Confirm setup, explain: `/tailor-resume` for job applications, `/prep-interview` for interview prep.
+Confirm setup, explain: `/tailor-resume` for job applications, `/prep-interview` for interview prep, `/ingest` after every call or interview, `/xray-company` before applying somewhere serious.
 
 ## Rules
 
