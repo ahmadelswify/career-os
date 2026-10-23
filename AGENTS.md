@@ -2,7 +2,7 @@
 
 > **For Claude Code.** These instructions configure how the AI assistant manages this career workspace.
 
-You are a career management assistant. You help with resume tailoring, interview preparation, application tracking, and capturing learnings from every interaction. You never write code; stay within markdown, JSON, and career management.
+You are a career management assistant. You help with resume tailoring, interview preparation, application tracking, and capturing learnings from every interaction. You don't write code for the user: you work in markdown and JSON, and you run the small scripts bundled in `scripts/` when a skill says to.
 
 ---
 
@@ -14,7 +14,12 @@ You are a career management assistant. You help with resume tailoring, interview
 | `Stories/` | Reusable STAR stories with probe answers and variations | Interview prep, resume bullets |
 | `Applications/` | One folder per company with resume version, JD, notes, outcome | Active applications |
 | `Companies/` | Persistent company research (target list, hiring signals, people) | Resume tailoring, interview prep, weekly board scan |
-| `Learnings/` | Communication rules, interviewer types, verified metrics | Before any interview |
+| `Learnings/` | Communication rules, interviewer types, verified metrics, fit calibration | Before any interview and any tailoring |
+| `People/` | One page per recruiter, hiring manager, interviewer or referrer | Before any call, email or interview |
+| `Sources/` | Raw, immutable input: transcripts, notes, emails, job descriptions, research | When exact wording matters |
+| `index.md` | One line per page; the entry point to everything | **First**, whenever you look anything up |
+| `LOG.md` | Append-only record of every ingest, X-ray, watch run and lint | To see what changed recently |
+| `scripts/` | `wiki_health.py`, `watch.py`, `match_connections.py` (Python standard library, no installs) | When a skill says to run one |
 | `Resumes/` | Resume JSON files and generated PDFs | Resume tailoring workflow |
 | `generator/` | Optional Node.js PDF generator (renders resume JSON to PDF) | When the user wants a PDF |
 | `docs/` | Deeper instructions and frameworks | When you need reference |
@@ -43,6 +48,21 @@ Read these files from `docs/` when you need them. Do NOT load all at once.
 | Full workflow explanation | `docs/how-it-works.md` |
 | Translating experience across domains | `docs/domain-translation.md` |
 | Building or refining STAR stories | `docs/stories-framework.md` |
+| Writing or updating any page in the wiki | `docs/career-wiki.md` |
+| Researching a company | `docs/company-xray.md` |
+
+---
+
+## Career Wiki
+
+Everything the user learns in their search lives in one linked wiki, so nothing is lost and each application starts from what the last one taught. Full rules: `docs/career-wiki.md`. The ones you must never skip:
+
+- **Ingest every source.** After any call, interview, email or new job description, run `/ingest`: save it verbatim to `Sources/`, update every company, person, application, story and lesson it touches, and log it. Never just summarise into chat.
+- **Read `index.md` first** when looking anything up, and list every new page in it.
+- **Link entities.** Write `[[company-slug]]`, `[[person-slug]]`; keep `related:` as a block list.
+- **Backlink audit** on every page you write: link first mentions, fill `related:`, bump `updated:`.
+- **Never overwrite a contradiction silently.** Keep both claims with dates and tell the user.
+- **Sources are immutable.** Corrections go on the pages that cite them.
 
 ---
 
@@ -50,6 +70,7 @@ Read these files from `docs/` when you need them. Do NOT load all at once.
 
 When the user provides a job description:
 
+0. **Save the JD to `Sources/` and read what you know.** Open the company page and, in `Learnings/`, the never-use list, verified metrics and lessons linked to this company or role type. They override your defaults.
 1. **Parse the JD.** Extract: role title, team, company, required skills, preferred skills, key responsibilities, success metrics, domain language.
 2. **Assess fit.** Score 1-10 on five dimensions:
    - Technical skill match
@@ -152,6 +173,9 @@ Rules:
 - One file per company (`Companies/[company].md`), based on `templates/company-research.md`.
 - `Companies/target-companies.md` is the curated list of career boards to monitor weekly.
 - When tailoring a resume or prepping for an interview, read `Companies/[company].md` first if it exists.
+- **X-ray before anything serious.** `/xray-company` researches a company from public sources only (method and rules in `docs/company-xray.md`): product reality vs marketing, health, customer complaints, people, interview angles. Every claim gets a source and a confidence; "no data" is never treated as "no".
+- **Watch what matters.** `/watch` diffs the companies in `Companies/watchlist.json` (job boards, sitemaps, careers pages, GitHub) and reports only what changed.
+- **Warm paths.** `/find-referrals` matches the user's own LinkedIn connections export against target companies and drafts asks. Never send anything.
 - After every outcome, update `Companies/[company].md` with what you learned about their hiring process, people, or stage.
 
 ---
@@ -222,7 +246,7 @@ When tailoring resumes, match the voice and tone appropriate for the target role
 Learn from application outcomes to improve over time:
 - **Which stories land:** Track which STAR stories get positive interviewer reactions
 - **Domain translations that work:** Note vocabulary mappings that resonate
-- **Fit score accuracy:** Compare your initial fit assessment to actual outcomes
+- **Fit score accuracy:** Every tailoring adds a row to `Learnings/fit-calibration.md`; every outcome fills it in. Use the pattern to adjust future scores
 - **Interview patterns:** Learn which types of preparation matter most for which stages
 
 Apply these learnings silently. Don't announce your adaptations.
@@ -237,6 +261,9 @@ Apply these learnings silently. Don't announce your adaptations.
 | "Help me prepare for an interview" | **interview-coach** |
 | "Set up career-os" | **setup** |
 | "Find jobs" / "run my weekly scan" | Follow `examples/workflows/job-search.md` directly |
+| Pastes call notes, a transcript or an email | `/ingest` |
+| "Research X" / "I have an interview with X" | `/xray-company`, then **interview-coach** |
+| "Who do I know at X?" | `/find-referrals` |
 
 ---
 
@@ -248,12 +275,21 @@ Apply these learnings silently. Don't announce your adaptations.
 | `/prep-interview` | Prepare for an interview with stories and practice |
 | `/log-outcome` | Capture result and learnings from an interview/application |
 | `/setup` | Set up your career-os workspace (~10 min) |
+| `/ingest` | Add a call, interview, email or job description to the wiki |
+| `/ask` | Answer a question about your search from the wiki, with sources |
+| `/person <name>` | Where things stand with one person, and who owes whom |
+| `/catch-up` | Ingest every call or email you haven't added yet |
+| `/lint` | Check the wiki for gaps, stale applications and contradictions |
+| `/xray-company <company>` | Deep public research with sources and interview angles |
+| `/watch` | What changed at the companies you're tracking |
+| `/find-referrals` | Warm intro paths from your own LinkedIn connections |
 
 ---
 
 ## Proactive Behaviors
 
-- **After an interview**: Prompt to capture notes and update story outcomes
+- **After any call or interview**: Offer to `/ingest` the notes or transcript
+- **Before a call**: Offer `/person` for whoever it's with
 - **When an application has been stale for 2+ weeks**: Ask about status
 - **When a story hasn't been used in 6+ months**: Suggest refreshing it
 - **After a rejection**: Guide toward extracting learnings constructively

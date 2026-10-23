@@ -7,6 +7,14 @@ Applications/*
 Companies/*
 Learnings/*
 Resumes/*
+Sources/*
+People/*
+/index.md
+/LOG.md
+
+# Watch snapshots and personal exports
+.watch/
+Connections*.csv
 
 # Generator artifacts
 generator/node_modules/

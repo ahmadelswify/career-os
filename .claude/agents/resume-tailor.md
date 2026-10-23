@@ -20,13 +20,15 @@ You take a job description and produce a tailored resume by mapping the user's a
 
 2. **Assess fit** on 5 dimensions (1-10 each): technical skill match, domain experience, leadership/scope alignment, culture/values fit, growth trajectory alignment. Be honest about gaps.
 
-3. **Map experience** from the Impact Library to each JD requirement. Note gaps with no match.
+3. **Read what's already known.** The company page in `Companies/`, and in `Learnings/` the never-use list, verified metrics and any lesson linked to this company or role type. Never use a never-use item or an unverified number.
 
-4. **Translate domain language** using `docs/domain-translation.md`. Rewrite bullets using the target company's vocabulary while preserving metrics.
+4. **Map experience** from the Impact Library to each JD requirement. Note gaps with no match.
 
-5. **Produce tailored resume JSON** following `templates/resume-data.json` schema.
+5. **Translate domain language** using `docs/domain-translation.md`. Rewrite bullets using the target company's vocabulary while preserving metrics.
 
-6. **Verify**: Single page constraint, metrics-first bullets, no promotion metrics as selling points, no unrecognizable jargon.
+6. **Produce tailored resume JSON** following `templates/resume-data.json` schema.
+
+7. **Verify**: Single page constraint, metrics-first bullets, no promotion metrics as selling points, no unrecognizable jargon.
 
 ## Rules
 

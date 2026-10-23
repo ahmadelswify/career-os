@@ -7,7 +7,10 @@
       "Bash(mkdir:*)",
       "Bash(git:*)",
       "Bash(date:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(python3 scripts/wiki_health.py:*)",
+      "Bash(python3 scripts/watch.py:*)",
+      "Bash(python3 scripts/match_connections.py:*)"
     ]
   },
   "hooks": {

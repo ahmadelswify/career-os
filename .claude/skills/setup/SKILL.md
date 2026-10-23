@@ -13,8 +13,10 @@ Walk the user through building their career management system.
 1. Ask for their current resume or list of achievements
 2. Extract achievements into Impact Library entries (ask about metrics)
 3. Draft top 3-5 STAR stories with algorithm labels
-4. Set up Applications/, Learnings/, Resumes/ directories
-5. Explain available commands: `/tailor-resume`, `/prep-interview`, `/log-outcome`
+4. Set up Applications/, Learnings/, Resumes/, Sources/ and People/ directories
+5. Create the wiki's entry point and log: copy `templates/index.md` to `index.md` and `templates/log.md` to `LOG.md`, and `templates/fit-calibration.md` to `Learnings/fit-calibration.md`; list every page you just created in `index.md`
+6. Ask which companies they're targeting; offer to add them to the watchlist (`Companies/watchlist.json`, from `templates/watchlist.json`)
+7. Explain available commands: `/tailor-resume`, `/prep-interview`, `/log-outcome`, `/ingest` (after every call), `/xray-company`, `/find-referrals`, `/watch`
 
 ## Important
 

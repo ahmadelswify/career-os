@@ -1,0 +1,15 @@
+{
+  "companies": [
+    {
+      "name": "Example Co",
+      "slug": "example-co",
+      "aliases": ["Example Company"],
+      "sources": [
+        { "type": "greenhouse", "board": "exampleco" },
+        { "type": "sitemap", "url": "https://example.com/sitemap.xml" },
+        { "type": "page", "url": "https://example.com/careers" },
+        { "type": "github", "org": "example-co" }
+      ]
+    }
+  ]
+}

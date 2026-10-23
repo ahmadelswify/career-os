@@ -29,7 +29,7 @@ for pattern in "${PROTECTED_PATTERNS[@]}"; do
   if echo "$REL_PATH" | grep -qE "$pattern"; then
     echo "BLOCKED: Cannot modify protected file: $REL_PATH"
     echo "Templates, docs, and system files are read-only during normal usage."
-    echo "Only user work directories (Impact-Library/, Stories/, Applications/, Learnings/, Resumes/) are writable."
+    echo "Only user work directories (Impact-Library/, Stories/, Applications/, Companies/, Learnings/, Resumes/, Sources/, People/) and index.md / LOG.md are writable."
     exit 2
   fi
 done

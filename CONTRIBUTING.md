@@ -22,7 +22,7 @@ Thanks for your interest in contributing.
 
 ## Style
 
-- Primarily a markdown-based system. Shell hooks (`.claude/hooks/*.sh`) and JSON schemas are the only non-markdown.
+- Primarily a markdown-based system. The exceptions are shell hooks (`.claude/hooks/*.sh`), JSON schemas, and the standard-library Python scripts in `scripts/`, which have tests: run `python3 -m unittest discover -s tests` before opening a PR.
 - Follow existing patterns.
 - Read CLAUDE.md and AGENTS.md before making changes.
 - Don't commit your own user content. The `.gitignore` excludes your personal folders; confirm `git status` before committing.
